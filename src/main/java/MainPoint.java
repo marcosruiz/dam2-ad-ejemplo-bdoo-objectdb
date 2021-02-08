@@ -6,7 +6,7 @@ import domain.Point;
 import javax.persistence.*;
 import java.util.List;
 
-public class Main {
+public class MainPoint {
   static EntityManager entityManager;
   static EntityManagerFactory entityManagerFactory;
   static PointDao pointDao;
@@ -35,14 +35,14 @@ public class Main {
   // Ejemplo de ejecución
   public static void executionExample(){
     // Creamos y guardamos 10 points
-    // for (int i = 0; i < 10; i++) {
-    //   Point point = new Point(i, i);
-    //   pointDao.save(point);
-    // }
+    for (int i = 0; i < 10; i++) {
+      Point point = new Point(i, i);
+      pointDao.save(point);
+    }
 
     // Mostramos por pantalla el número de points que hay
     Long numPoints = pointDao.getNum();
-    System.out.println("TOTAL POIS : " + numPoints);
+    System.out.println("TOTAL POINTS : " + numPoints);
 
     // Obtenemos y mostramos todos los points
     System.out.println("\nPOINTS:");
@@ -64,18 +64,6 @@ public class Main {
     for(Point point : filteredPoints){
       System.out.println(point);
     }
-
-    // Creamos y mostramos por pantalla una Forma Geometrica
-    GeometricForm geometricForm = new GeometricForm();
-    geometricForm.setPoints(filteredPoints);
-    geometricFormDao.save(geometricForm);
-    System.out.println("\nFORMA GEOMETRICA: ");
-    System.out.println(geometricForm);
-
-    // Elimintamos todos los points
-    //for(Point point : points){
-    //  pointDao.delete(point);
-    //}
   }
 
 }
