@@ -17,7 +17,7 @@ public class MainPoint {
     // Establecemos la conexión
     entityManagerFactory =
         Persistence.createEntityManagerFactory(
-            "points.odb");
+                "objectdb:$objectdb/db/points.odb");
 
     entityManager = entityManagerFactory.createEntityManager();
 

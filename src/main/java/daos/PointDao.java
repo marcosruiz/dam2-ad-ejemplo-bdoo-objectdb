@@ -44,14 +44,24 @@ public class PointDao implements Dao<Point>{
   }
 
   public Long getNum(){
-    Query q1 = entityManager.createQuery("SELECT COUNT(p) FROM domain.Point p");
-    return (Long) q1.getSingleResult();
+    Query query = entityManager.createQuery("SELECT COUNT(p) FROM domain.Point p");
+    return (Long) query.getSingleResult();
   }
 
   public List<Point> getGreatherOrEqualThan(int number) {
-    Query query = entityManager.createQuery("SELECT p FROM domain.Point p WHERE p.x >= :x");
+    Query query = entityManager.createQuery(
+            "SELECT p FROM domain.Point p WHERE p.x >= :x");
     query.setParameter("x", number);
     return query.getResultList();
   }
+
+  // A EVITAR!!!
+  public List<Point> getInyectionOql(String data) {
+    // Si data = "0; SELECT gf FROM domain.GeometricFrom gf";
+    Query query = entityManager.createQuery(
+            "SELECT p FROM domain.Point p WHERE p.x >= " + data);
+    return query.getResultList();
+  }
+
 
 }
