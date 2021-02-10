@@ -1,6 +1,5 @@
 import daos.GeometricFormDao;
 import daos.PointDao;
-import domain.GeometricForm;
 import domain.Point;
 
 import javax.persistence.*;
@@ -60,7 +59,7 @@ public class MainPoint {
 
     // Hacemos una query personalizada
     System.out.println("\nPOINTS FILTRADOS:");
-    List<Point> filteredPoints = pointDao.getGreatherOrEqualThan(105);
+    List<Point> filteredPoints = pointDao.getGreatherOrEqualXThan(105);
     for(Point point : filteredPoints){
       System.out.println(point);
     }

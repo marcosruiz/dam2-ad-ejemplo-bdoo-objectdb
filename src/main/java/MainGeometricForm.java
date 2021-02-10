@@ -21,7 +21,7 @@ public class MainGeometricForm {
     // Establecemos la conexión
     entityManagerFactory =
         Persistence.createEntityManagerFactory(
-            "points.odb");
+            "objectdb:$objectdb/db/points.odb");
 
     entityManager = entityManagerFactory.createEntityManager();
 
@@ -37,9 +37,13 @@ public class MainGeometricForm {
   }
 
   public static void executionExample(){
+
+    // Creamos y guardamos los Points
     List<Point> points = new ArrayList<>();
     for(int i=0; i<10; i++){
-      points.add(new Point(i,+i));
+      Point point = new Point(i,+i);
+      pointDao.save(point);
+      points.add(point);
     }
 
     // Creamos una Forma Geometrica
@@ -55,7 +59,7 @@ public class MainGeometricForm {
     }
 
     // Mostramos por pantalla todos los puntos
-    System.out.println("\nPOINTS TRAS BORRAR FORMA GEOMETRICA:");
+    System.out.println("\nPUNTOS:");
     points = pointDao.getAll();
     for(Point point : points){
       System.out.println(point);
@@ -67,16 +71,16 @@ public class MainGeometricForm {
     }
 
     // Listamos los puntos
-    System.out.println("\nPOINTS TRAS BORRAR FORMA GEOMETRICA:");
+    System.out.println("\nPOINTS TRAS BORRAR LAS FORMAS GEOMETRICAS:");
     points = pointDao.getAll();
     for(Point point : points){
       System.out.println(point);
     }
 
     // Elimintamos todos los points
-    //for(Point point : points){
-    //  pointDao.delete(point);
-    //}
+    for(Point point : points){
+      pointDao.delete(point);
+    }
   }
 
 

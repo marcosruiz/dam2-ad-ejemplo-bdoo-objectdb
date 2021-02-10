@@ -48,7 +48,7 @@ public class PointDao implements Dao<Point>{
     return (Long) query.getSingleResult();
   }
 
-  public List<Point> getGreatherOrEqualThan(int number) {
+  public List<Point> getGreatherOrEqualXThan(int number) {
     Query query = entityManager.createQuery(
             "SELECT p FROM domain.Point p WHERE p.x >= :x");
     query.setParameter("x", number);
