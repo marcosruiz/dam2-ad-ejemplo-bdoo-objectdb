@@ -1,4 +1,4 @@
-# psp2-ad-objectdb
+# dam2-ad-ejemplo-bdoo-objectdb
 
 Ejemplo de uso de la Base de Datos Orientada a Objetos ObjectDB
 
